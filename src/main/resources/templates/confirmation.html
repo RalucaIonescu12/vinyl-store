@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/confirmation.css}">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>🎵 Vinyl Records</h1>
+        <nav>
+            <a href="/vinyls">Vinyls</a>
+            <a href="/profile">Profile</a>
+            <a href="/cart">🛒 Cart</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="confirmation-section">
+        <h2>Order Placed Successfully!</h2>
+        <p>Thank you for your purchase. Your order has been placed and is being processed.</p>
+        <p>We hope you enjoy your vinyl records! 🎶</p>
+
+        <div class="order-details">
+            <p><strong>Order Number:</strong> <span th:text="${orderNumber}">12345</span></p>
+            <p><strong>Estimated Delivery:</strong> <span>3-5 business days</span></p>
+        </div>
+
+        <div class="confirmation-buttons">
+            <a href="/vinyls" class="button">Continue Shopping</a>
+            <a href="/profile" class="button">View Profile</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Vinyl Store | Designed with ❤️ for music lovers</p>
+</footer>
+
+</body>
+</html>

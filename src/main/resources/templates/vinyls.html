@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinyls - Vinyl Store</title>
+    <link rel="stylesheet" th:href="@{/css/vinyls.css}">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>🎵 Vinyl Records</h1>
+        <nav>
+            <a href="/vinyls">Vinyls</a>
+            <a href="/cart" th:if="${!isAdmin}">🛒 Cart</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+            <a href="/admin/add-vinyl-form" th:if="${isAdmin}">Add vinyl</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <h2>Discover Your Favorite Vinyls</h2>
+        <p>Browse through our collection and rediscover the magic of music on vinyl.</p>
+    </section>
+
+    <div class="vinyls-list">
+        <div th:each="vinyl : ${vinyls}" class="vinyl-card">
+            <h3 th:text="${vinyl.title}"></h3>
+            <p><strong>Artist:</strong> <span th:text="${vinyl.artist}"></span></p>
+            <p><strong>Genre:</strong> <span th:text="${vinyl.genre}"></span></p>
+            <p><strong>Price:</strong> $<span th:text="${vinyl.price}"></span></p>
+            <p><strong>Stock:</strong> <span th:text="${vinyl.stock}"></span> copies left</p>
+
+            <div th:if="${isAdmin}" class="admin-options">
+                <form th:action="@{/admin/increase-stock/{vinylId}(vinylId=${vinyl.id})}" method="post">
+                    <input type="number" name="quantity" placeholder="Increase stock" required>
+                    <button type="submit" class="admin-btn">Increase Stock</button>
+                </form>
+                <form th:action="@{/admin/remove-vinyl/{vinylId}(vinylId=${vinyl.id})}" method="post">
+                    <button type="submit" class="admin-btn">Remove Vinyl</button>
+                </form>
+            </div>
+
+            <div th:unless="${isAdmin}" class="user-options">
+                <form th:action="@{/cart/add/{vinylId}(vinylId=${vinyl.id})}" method="post">
+                    <button type="submit" class="user-btn">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 Vinyl Store | Designed with ❤️ for music lovers</p>
+</footer>
+
+</body>
+</html>

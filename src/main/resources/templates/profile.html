@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Vinyl Store</title>
+  <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <h1>🎵 Vinyl Records</h1>
+    <nav>
+      <a href="/vinyls">Vinyls</a>
+      <a href="/cart">🛒 Cart</a>
+      <a href="/profile">Profile</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="profile-section">
+    <div class="profile-container">
+      <h2>Your Profile</h2>
+      <div class="profile-details">
+        <p><strong>Email:</strong> <span th:text="${user.username}"></span></p>
+      </div>
+
+      <div class="profile-actions">
+        <a href="/profile/edit" class="edit-profile-btn">Edit Profile</a>
+        <a href="/change-password" class="change-password-btn">Change Password</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2024 Vinyl Store | Designed with ❤️ for music lovers</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Shipping Address</title>
+    <link rel="stylesheet" th:href="@{/css/fillShippingAddress.css}">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>🎵 Vinyl Records</h1>
+        <nav>
+            <a href="/vinyls">Vinyls</a>
+            <a href="/profile">Profile</a>
+            <a href="/cart">🛒 Cart</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="address-section">
+        <div class="address-container">
+            <h2>Add Shipping Address</h2>
+            <form th:action="@{/cart/shipping-address/save}" method="post" th:object="${shippingAddress}">
+                <div class="form-group">
+                    <label for="addressLine1">Address Line 1:</label>
+                    <input type="text" id="addressLine1" name="addressLine1" th:value="*{addressLine1}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="addressLine2">Address Line 2:</label>
+                    <input type="text" id="addressLine2" name="addressLine2" th:value="*{addressLine2}">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" th:value="*{city}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" th:value="*{state}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="zipCode">Zip Code:</label>
+                    <input type="text" id="zipCode" name="zipCode" th:value="*{zipCode}" required>
+                </div>
+
+                <button type="submit" class="save-btn">Save Address</button>
+            </form>
+            <div th:if="${successMessage}" class="success-message">
+                <p th:text="${successMessage}"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="place-order-section">
+        <div class="place-order-container">
+            <h2>Place Your Order</h2>
+            <form th:action="@{/cart/checkout}" method="post">
+                <button type="submit" class="place-order-btn">Place Order</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Vinyl Store | Designed with ❤️ for music lovers</p>
+</footer>
+
+</body>
+</html>

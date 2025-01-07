@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vinyl</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Add New Vinyl</h1>
+</header>
+
+<main>
+    <form th:action="@{/admin/add-vinyl}" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" th:value="${vinyl.title}" required>
+
+        <label for="artist">Artist:</label>
+        <input type="text" id="artist" name="artist" th:value="${vinyl.artist}" required>
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" th:value="${vinyl.genre}" required>
+
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" th:value="${vinyl.price}" required>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" th:value="${vinyl.stock}" required>
+
+        <button type="submit">Add Vinyl</button>
+    </form>
+</main>
+
+<footer>
+    <p>© 2024 Vinyl Store | Designed with ❤️ for music lovers</p>
+</footer>
+</body>
+</html>
